@@ -1,0 +1,46 @@
+---
+title: "Diversity in Economics Seminars:"
+subtitle: "Who Gives Invited Talks?"
+shortTitle: "Diversity in Economics Seminars"
+author: "Jennifer L. Doleac, Erin Hengel, and Elizabeth Pancotti"
+thanks: |
+  Doleac: Texas A\&M University, College Station, TX, jdoleac@tamu.edu. Hengel: University of Liverpool, Liverpool, UK, erin.hengel@gmail.com. Pancotti: Employ America, Washington, DC, elizabethpancotti@gmail.com. Thanks to Will McGrew for excellent research assistance. Thanks also to our wonderful data collection team: Ashwin Ashok, Abby Byrd, Hudson Blom, Anne Burton, Brandon Casper, Elissa Cohen, Karl Dunkle Werner, Kyle Faldyn, Svetlana Galvez, Jessica Goode, Gavin Greene, Oliver Hannaoui, Madeline Hinojosa, Haris Jaffer, Jack Jenson, Samantha Kim, Dana Kraus, Eric Krebs, Margarita Montalvo, Kate Musen, Brendan Ok, Grace Phillips, Ananya Prakash, Brian Prescott, Arjun Ravi, Rebecca Regan, Cecilia Rodarte, Eric Russell, Lauren Schechter, Rachel Schuh, Sarah Shi, Anna Stansbury, Chelsea Temple, Madeline Tweden, Avie Vaidya, and Natalie Wilson.
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  bookdown::pdf_document2:
+    template: 0-templates/aea-pp.tex
+    latex_engine: xelatex
+    keep_tex: no
+bibliography: 0-bib/references.bib
+link-citations: true
+knit: (function (...) { source('0-code/myknit.R'); myknit(...) })
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+# Set up document (ggplot defaults, knitr hooks, etc.)
+source('0-code/setup.R')
+
+# Create datasets used in paper and export them to csv files.
+source('0-code/create-data.R')
+
+# Import and analyse data.
+source('0-code/analyse-data.R')
+```
+
+```{r child = '1-introduction.Rmd'}
+```
+
+```{r child = '2-data.Rmd'}
+```
+
+```{r child = '3-results.Rmd'}
+```
+
+```{r child = '4-top-dept.Rmd'}
+```
+
+```{r child = '5-trends.Rmd'}
+```
+
+```{r child = '6-discussion.Rmd'}
+```

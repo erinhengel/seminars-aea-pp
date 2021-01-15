@@ -1,0 +1,38 @@
+# Trends over time
+
+The graphs in figure \@ref(fig:share-talks) show the share of talks given by speakers in each demographic group. Observations are at the department-semester level. The solid line shows the mean across departments over time, and the dotted line shows the median. The top-left graph shows the trends for non-URM women; the top-right graph shows trends for non-URM men; the bottom-left graph shows trends for URM women, and the bottom-right graph shows trends for URM men. 
+
+(ref:share-talks-us-caption) Share of talks given by each group over time.
+
+```{r Figure 3, fig.align="center", fig.cap="(ref:share-talks-us-caption)", fig.pos='p', fig.height=3.5, fig.note="(ref:share-talks-us-note)", fig.source="(ref:share-talks-us-source)", label="share-talks", fig.path='0-images/'}
+demo_category <- read_csv("0-data/figure-1.csv", col_names=TRUE, col_types=cols())
+
+women.nonurm <- ggplot(data=subset(demo_category, subset=urm_status=="Non-URM female"), aes(x=as.Date(semester), y=percent, linetype=type)) +
+  geom_line(colour=ColourPalette[1]) +
+  labs(x=NULL, y=NULL, title= "Non-URM women") +
+  scale_linetype_manual(values=c("solid", "dotted"))
+men.nonurm <- ggplot(data=subset(demo_category, subset=urm_status=="Non-URM male"), aes(x=as.Date(semester), y=percent, linetype=type)) +
+  geom_line(colour=ColourPalette[2]) +
+  labs(x=NULL, y=NULL, title= "Non-URM men") +
+  scale_linetype_manual(values=c("solid", "dotted"))
+women.urm <- ggplot(data=subset(demo_category, subset=urm_status=="URM female"), aes(x=as.Date(semester), y=percent, linetype=type)) +
+  geom_line(colour=ColourPalette[1]) +
+  labs(x=NULL, y=NULL, title= "URM women") +
+  scale_linetype_manual(values=c("solid", "dotted"))
+men.urm <- ggplot(data=subset(demo_category, subset=urm_status=="URM male"), aes(x=as.Date(semester), y=percent, linetype=type)) +
+  geom_line(colour=ColourPalette[2]) +
+  labs(x=NULL, y=NULL, title= "URM men") +
+  scale_linetype_manual(values=c("solid", "dotted"))
+
+ggarrange(women.nonurm + ylim(0.1, 0.9), men.nonurm + ylim(0.1, 0.9), women.urm, men.urm, nrow=2, ncol=2, common.legend=TRUE, legend="bottom")
+```
+
+(ref:share-talks-us-note) Each graph shows the mean and median number of talks given by speakers in the specified demographic group. The $y$-axis shows the share of talks given by speakers in that group, across all departments in a particular semester.
+
+(ref:share-talks-us-source) Department websites and authors' calculations.
+
+For non-URM women, the mean hovered around 0.20 until 2019. We see an increase to about 0.23 in the spring of 2019 and to about 0.32 in the fall of 2019. The median is consistently lower than the mean, which implies a skewed distribution. There are some departments that invite an unusually diverse set of speakers, and their seminar compositions are pulling the average upwards. At one department in our sample, 0 non-URM women spoke during this period; at three other departments, close to 50\% of talks were given by non-URM women.
+
+For non-URM men, the trend looks fairly flat (the mean hovers around 0.73) from the spring of 2015 through the spring of 2018, at which point it begins declining (to about 0.65 in 2019). The median is consistently above the mean for this group, which again implies a skewed distribution. There are some departments that invite an unusually diverse set of speakers, and in this case their seminar compositions are pulling the average for non-URM men downwards. Most departments are inviting a less-diverse set of speakers than this group's average would suggest. At two departments in our sample, fewer than 50\% of speakers were non-URM men, but at three others, at least 90\% were non-URM men.
+
+The trends for URM women and men are very different: For both groups, we see low, flat averages (around 0.005) through the spring of 2018. Beginning in the fall of 2018, we see increases (to about 0.025) in the average share of talks given by URM women and URM men. For URM women, the average declines again to the original level the following semester; for URM men, the average stays elevated through 2019. It is striking that the median share of URM speakers is 0 for the full time period, for both groups. `r nrow(subset(ipeds %>% group_by(school, urm_status) %>% tally() %>% ungroup() %>% complete(school, nesting(urm_status), fill=list(n=0)), subset=urm_status=="URM female"&n==0))` of the `r length(unique(ipeds$school))` departments in our sample did not invite a single URM woman to speak during this period; `r nrow(subset(ipeds %>% group_by(school, urm_status) %>% tally() %>% ungroup() %>% complete(school, nesting(urm_status), fill=list(n=0)), subset=urm_status=="URM male"&n==0))` did not invite a single URM man to speak.

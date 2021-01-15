@@ -1,0 +1,47 @@
+% PP-Article.tex for AEA last revised 22 June 2011
+\documentclass[PP]{AEA}
+
+% If you have trouble with the mathtime package please see our technical support 
+% document at: http://www.aeaweb.org/templates/technical_support.pdf
+% You may remove the mathtime package if you can't get it working but your page
+% count may be inaccurate as a result.
+%\usepackage[cmbold]{mathtime}
+\usepackage{newtxtext, newtxmath}
+
+% Note: you may use either harvard or natbib (but not both) to provide a wider
+% variety of citation commands than latex supports natively. See below.
+
+% Uncomment the next line to use the natbib package with bibtex 
+\usepackage{natbib}
+
+% Uncomment the next line to use the harvard package with bibtex
+%\usepackage[abbr]{harvard}
+
+% This command determines the leading (vertical space between lines) in draft mode
+% with 1.5 corresponding to "double" spacing.
+\draftSpacing{1.5}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[colorlinks=true,urlcolor=black,citecolor=black,linkcolor=black]{hyperref}
+
+\title{$title$\\$subtitle$}
+\shortTitle{$shortTitle$}
+\author{$author$\thanks{$thanks$}}
+\pubMonth{Month}
+\date{\today}
+\pubYear{Year}
+\pubVolume{Vol}
+\pubIssue{Issue}
+
+\begin{document}
+\maketitle
+
+$body$
+
+\bibliographystyle{aea}
+\bibliography{$bibliography$}
+
+\end{document}
