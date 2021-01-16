@@ -26,7 +26,7 @@ writeLines(paste("\\begin{table}\n\\caption{\\label{tab:seminar-sample}Sample of
 
 (ref:seminar-sample-note) Sample includes all talks by Ph.D.-economist speakers visiting from other institutions (column 1) and all unique Ph.D.-economist seminar speakers who give at least one talk at a school other than their own (column 2). Ph.D. years are from speakers' CVs. RePEc rankings are of the speakers' home departments; these were retrieved in August 2019, and range from 1 (top) to 289 (bottom). If a speaker gave more than one talk, data in column 2 are based on his/her maximum and minimum years since Ph.D. and RePEc ranking, respectively.
 
-(ref:seminar-sample-source) Department websites and authors' calculations.
+(ref:seminar-sample-source) Department websites and authors' calculations \citep{DoleacData2021}.
 
 `r round(100*nrow(ipeds[ipeds$years_from_phd<6&!is.na(ipeds$years_from_phd),])/nrow(ipeds[!is.na(ipeds$years_from_phd),]), digits=1)`\% of talks were given by junior scholars (those who received their Ph.D. fewer than 6 years earlier). `r round(100*nrow(ipeds[ipeds$years_from_phd>=6&ipeds$years_from_phd<12&!is.na(ipeds$years_from_phd),])/nrow(ipeds[!is.na(ipeds$years_from_phd),]), digits=1)`\% were given by mid-career scholars (received their Ph.D. 6-11 years earlier). `r round(100*nrow(ipeds[ipeds$years_from_phd>=12&!is.na(ipeds$years_from_phd),])/nrow(ipeds[!is.na(ipeds$years_from_phd),]), digits=1)`\% of talks were given by senior scholars (received their Ph.D. 12$+$ years earlier).
 

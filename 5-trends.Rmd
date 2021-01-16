@@ -29,7 +29,7 @@ ggarrange(women.nonurm + ylim(0.1, 0.9), men.nonurm + ylim(0.1, 0.9), women.urm,
 
 (ref:share-talks-us-note) Each graph shows the mean and median number of talks given by speakers in the specified demographic group. The $y$-axis shows the share of talks given by speakers in that group, across all departments in a particular semester.
 
-(ref:share-talks-us-source) Department websites and authors' calculations.
+(ref:share-talks-us-source) Department websites and authors' calculations  \citep{DoleacData2021}.
 
 For non-URM women, the mean hovered around 0.20 until 2019. We see an increase to about 0.23 in the spring of 2019 and to about 0.32 in the fall of 2019. The median is consistently lower than the mean, which implies a skewed distribution. There are some departments that invite an unusually diverse set of speakers, and their seminar compositions are pulling the average upwards. At one department in our sample, 0 non-URM women spoke during this period; at three other departments, close to 50\% of talks were given by non-URM women.
 
