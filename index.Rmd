@@ -21,7 +21,7 @@ knit: (function (...) { source('0-code/myknit.R'); myknit(...) })
 source('0-code/setup.R')
 
 # Create datasets used in paper and export them to csv files.
-source('0-code/create-data.R')
+# source('0-code/create-data.R')
 
 # Import and analyse data.
 source('0-code/analyse-data.R')
